@@ -35,7 +35,7 @@ export function setupFood() {
                         <th>Image</th>
                     </tr>
                     <tr>
-                        <td>Schwartz's Deli</td>
+                        <td>India Rosa</td>
                         <td>⭐⭐⭐⭐⭐</td>
                         <td><img src="https://via.placeholder.com/100x100?text=Schwartz%27s+Deli" alt="Schwartz's Deli"></td>
                     </tr>
@@ -89,6 +89,29 @@ export function setupFood() {
                         <td>Juliette & Chocolat</td>
                         <td>⭐⭐⭐⭐⭐</td>
                         <td><img src="https://via.placeholder.com/100x100?text=Juliette+%26+Chocolat" alt="Juliette & Chocolat"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+        <div class="dropdown">
+            <button class="dropdown-button">Cafee <span class="chevron">&#9662;</span></button>
+            <div class="dropdown-content">
+                <table>
+                    <tr>
+                        <th>Restaurant</th>
+                        <th>Rating</th>
+                        <th>Image</th>
+                    </tr>
+                    <tr>
+                        <td>Le Cartet</td>
+                        <td>⭐⭐⭐⭐</td>
+                        <td><img src="https://via.placeholder.com/100x100?text=Le+Cartet" alt="Le Cartet"></td>
+                    </tr>
+                    <tr>
+                        <td>Maison Christian Faure</td>
+                        <td>⭐⭐⭐⭐⭐</td>
+                        <td><img src="https://via.placeholder.com/100x100?text=Maison+Christian+Faure" alt="Maison Christian Faure"></td>
                     </tr>
                 </table>
             </div>

@@ -1,12 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const themeToggle = document.getElementById('theme-toggle');
-    if (themeToggle) {
-        themeToggle.addEventListener('click', function() {
-            const checkbox = this.querySelector('.theme-switch-checkbox');
-            checkbox.checked = !checkbox.checked;
-            toggleTheme(); // Call the existing function to handle theme toggling
-        });
-    }
+    const themeLabel = themeToggle.querySelector('.theme-switch-label');
 
     function toggleTheme() {
         const root = document.documentElement;
@@ -15,6 +9,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
         root.setAttribute('data-theme', newTheme);
         localStorage.setItem('theme', newTheme);
+
+        // Update the label text to represent the current mode
+        themeLabel.textContent = newTheme.charAt(0).toUpperCase() + newTheme.slice(1) + " mode";
     }
 
     function applySavedTheme() {
@@ -22,11 +19,18 @@ document.addEventListener('DOMContentLoaded', function() {
         const root = document.documentElement;
         root.setAttribute('data-theme', savedTheme);
 
-        const checkbox = document.querySelector('.theme-switch-checkbox');
-        if (checkbox) {
-            checkbox.checked = savedTheme === 'dark';
-        }
+        const checkbox = themeToggle.querySelector('.theme-switch-checkbox');
+        checkbox.checked = savedTheme === 'dark';
+
+        // Set the initial label text to represent the current mode
+        themeLabel.textContent = savedTheme.charAt(0).toUpperCase() + savedTheme.slice(1) + " mode";
     }
 
     applySavedTheme();
+
+    themeToggle.addEventListener('click', function() {
+        const checkbox = this.querySelector('.theme-switch-checkbox');
+        checkbox.checked = !checkbox.checked;
+        toggleTheme();
+    });
 });
