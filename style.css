@@ -1,96 +1,345 @@
 :root {
+  --background-color: #ffffff;
+  --text-color: #213547;
+  --nav-bg-color: #f9f9f9;
+  --nav-text-color: #213547;
+  --nav-hover-bg-color: #747bff;
+  --footer-bg-color: #f9f9f9;
+  --footer-text-color: #666666;
+  --table-bg-color: #ffffff;
+  --table-header-bg-color: #f9f9f9;
+  --table-text-color: #213547;
+  --dropdown-bg-color: #f9f9f9;
+  --dropdown-text-color: #213547;
+  --dropdown-hover-bg-color: #ddd;
+
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+:root[data-theme='dark'] {
+  --background-color: #242424;
+  --text-color: rgba(255, 255, 255, 0.87);
+  --nav-bg-color: #1a1a1a;
+  --nav-text-color: #646cff;
+  --nav-hover-bg-color: #333;
+  --footer-bg-color: #1a1a1a;
+  --footer-text-color: #888;
+  --table-bg-color: #1a1a1a;
+  --table-header-bg-color: #1a1a1a;
+  --table-text-color: #ffffff;
+  --dropdown-bg-color: #1a1a1a;
+  --dropdown-text-color: #ffffff;
+  --dropdown-hover-bg-color: #333;
 }
 
 body {
   margin: 0;
   display: flex;
-  place-items: center;
+  flex-direction: column;
   min-width: 320px;
   min-height: 100vh;
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+nav {
+  background-color: var(--nav-bg-color);
+  padding: 1rem;
+  display: flex;
+  justify-content: flex-start;
+}
+
+nav ul {
+  list-style-type: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li {
+  margin-right: 2rem; /* Space between menu items */
+}
+
+nav ul li a {
+  text-decoration: none;
+  font-weight: 500;
+  color: var(--nav-text-color);
+  font-size: 1em;
+  transition: all 0.3s ease;
+  padding: 10px;
+  display: block;
+  border-radius: 4px;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+  color: #ffffff;
+  background-color: var(--nav-hover-bg-color);
+  font-size: 1.25em;
+  padding-left: 15px;
 }
 
 #app {
-  max-width: 1280px;
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+#content {
+  flex-grow: 1;
   padding: 2rem;
-  text-align: center;
+  text-align: left;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vanilla:hover {
-  filter: drop-shadow(0 0 2em #f7df1eaa);
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 1rem;
+  color: var(--text-color);
 }
 
-.card {
-  padding: 2em;
+h2 {
+  font-size: 1.75em;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
 }
 
-.read-the-docs {
-  color: #888;
+p {
+  font-size: 1.25em;
+  line-height: 1.6;
+  color: var(--text-color);
 }
 
-button {
+.spot {
+  margin-bottom: 2rem;
+}
+
+.spot img {
+  width: 100%;
+  height: auto;
   border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  margin-top: 0.5rem;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+footer {
+  background-color: var(--footer-bg-color);
+  color: var(--footer-text-color);
+  padding: 1rem;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+footer p {
+  margin: 0;
+}
+
+/* Align the table columns */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+  background-color: var(--table-bg-color);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  vertical-align: middle;
+}
+
+th {
+  background-color: var(--table-header-bg-color);
+  color: var(--table-text-color);
+  width: 33%;
+}
+
+td img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Style for the dropdown buttons */
+.dropdown {
+  margin-bottom: 1rem;
+}
+
+.dropdown-button {
+  background-color: var(--dropdown-bg-color);
+  color: var(--dropdown-text-color);
+  padding: 10px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  cursor: pointer;
+  font-size: 1.25em;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dropdown-button:hover {
+  background-color: var(--dropdown-hover-bg-color);
+}
+
+.chevron {
+  font-size: 1.25em;
+  transition: transform 0.3s ease;
+}
+
+/* Rotate the chevron when dropdown is active */
+.dropdown.active .chevron {
+  transform: rotate(180deg);
+}
+
+/* Style for the dropdown content */
+.dropdown-content {
+  display: none;
+  overflow: hidden;
+}
+
+/* Show the dropdown content when the button is clicked */
+.dropdown.active .dropdown-content {
+  display: block;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+/* Toggle switch when checked */
+input:checked + .slider {
+  background-color: #747bff;
+}
+
+input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+/* Positioning the toggle label */
+.toggle-label {
+  margin-left: 10px;
+  font-weight: 500;
+  color: var(--nav-text-color);
+  vertical-align: middle;
+}
+/* Ensure the navbar has relative positioning */
+nav {
+  background-color: var(--nav-bg-color);
+  padding: 1rem;
+  display: flex;
+  justify-content: flex-start;
+  position: relative; /* Added to allow positioning of the toggle button */
+}
+/* Ensure the navbar has relative positioning */
+nav {
+  background-color: var(--nav-bg-color);
+  padding: 1rem;
+  display: flex;
+  justify-content: flex-start;
+  position: relative; /* Allows positioning of the toggle button */
+}
+
+/* Ensure the navbar items are aligned to the left */
+nav ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+
+/* Add space between navbar items */
+nav ul li {
+  margin-right: 2rem;
+}
+
+/* Position the toggle button on the far right of the navbar */
+.theme-switch {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+/* Toggle styles, as previously discussed */
+.theme-switch-label {
+  margin-right: 8px;
+  font-size: 16px;
+  color: var(--text-color);
+}
+
+.theme-switch-checkbox {
+  display: none;
+}
+
+.theme-switch-slider {
+  position: relative;
+  width: 40px;
+  height: 20px;
+  background-color: #ccc;
+  border-radius: 34px;
+  transition: background-color 0.4s;
+}
+
+.theme-switch-slider::before {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  bottom: 3px;
+  left: 3px;
+  transition: transform 0.4s;
+}
+
+/* Toggle the background and slider position when checked */
+.theme-switch-checkbox:checked + .theme-switch-slider {
+  background-color: #747bff;
+}
+
+.theme-switch-checkbox:checked + .theme-switch-slider::before {
+  transform: translateX(20px);
 }
